@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create a Patel Times account to save local orders and access the dashboard.">
+  <title>Register | Patel Times</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="register">
+  <header id="site-header" class="site-header"></header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="auth-layout">
+          <article class="auth-copy glass-card" data-reveal>
+            <span class="eyebrow">Register</span>
+            <h1>Join the Patel Times circle</h1>
+            <p>
+              Create a local account to keep your orders, access your dashboard, and make the luxury shopping flow
+              feel complete in this offline demo.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Email validation</span>
+              <span class="chip">Password match</span>
+              <span class="chip">Instant dashboard access</span>
+            </div>
+          </article>
+
+          <article class="form-card glass-card" data-reveal style="--delay:1;">
+            <h2>Create Account</h2>
+            <form id="register-form" class="form-grid">
+              <div class="input-group full">
+                <label for="register-name">Full Name</label>
+                <input class="input" id="register-name" name="fullName" type="text" placeholder="Enter your full name"
+                  required>
+              </div>
+              <div class="input-group">
+                <label for="register-email">Email</label>
+                <input class="input" id="register-email" name="email" type="email" placeholder="Enter Gmail address"
+                  pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$" title="Enter valid Gmail address (example@gmail.com)"
+                  required>
+              </div>
+              <div class="input-group">
+                <label for="register-phone">Phone</label>
+                <input class="input"
+       id="register-phone"
+       name="phone"
+       type="tel"
+       placeholder="Enter phone number"
+       pattern="[0-9]{10}"
+       maxlength="10"
+       title="Enter 10 digit phone number"
+       required>
+              </div>
+              <div class="input-group">
+                <label for="register-password">Password</label>
+                <input class="input" id="register-password" name="password" type="password"
+                  placeholder="Create a password" required>
+              </div>
+              <div class="input-group">
+                <label for="register-confirm-password">Confirm Password</label>
+                <input class="input" id="register-confirm-password" name="confirmPassword" type="password"
+                  placeholder="Confirm password" required>
+              </div>
+              <div class="input-group full">
+                <button class="btn btn-primary btn-block" type="submit">Create Account</button>
+              </div>
+            </form>
+            <div id="register-message"></div>
+            <p class="muted-line">Already registered? <a class="link-button" href="login.html">Login here</a>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/script.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/auth.js" defer></script>
+</body>
+
+</html>

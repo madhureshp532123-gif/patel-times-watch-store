@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your Patel Times order through the premium offline checkout flow.">
+  <title>Checkout | Patel Times</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="checkout">
+  <header id="site-header" class="site-header"></header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="page-banner glass-card" data-reveal>
+          <div class="page-banner-grid">
+            <div>
+              <span class="eyebrow">Checkout</span>
+              <h1>Secure your Patel Times order</h1>
+              <p>Submit your delivery information, choose a payment method, and store the order locally.</p>
+            </div>
+            <div class="chip-row">
+              <span class="chip">Local Orders</span>
+              <span class="chip">Pending Status</span>
+              <span class="chip">Dashboard Sync</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkout-layout" style="margin-top: 1.5rem;">
+          <div class="checkout-main">
+            <article class="form-card glass-card" data-reveal>
+              <h2>Billing & Delivery</h2>
+              <p class="lead">All checkout data is stored in localStorage to simulate an offline e-commerce flow.</p>
+              <form id="checkout-form" class="form-grid">
+                <div class="input-group">
+                  <label for="checkout-name">Full Name</label>
+                  <input class="input" id="checkout-name" name="fullName" type="text" placeholder="Enter full name"
+                    required>
+                </div>
+                <div class="input-group">
+                  <label for="checkout-email">Email</label>
+                  <input class="input" id="checkout-email" name="email" type="email" placeholder="Enter email"
+                    pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$" title="Enter a valid Gmail address (example@gmail.com)"
+                    required>
+                </div>
+                <div class="input-group">
+                  <label for="checkout-phone">Phone</label>
+                  <input class="input" id="checkout-phone" name="phone" type="tel" placeholder="Enter phone number"
+                    pattern="[0-9]{10}" maxlength="10" title="Enter 10 digit phone number" required>
+                </div>
+                <div class="input-group">
+                  <label for="checkout-city">City</label>
+                  <input class="input" id="checkout-city" name="city" type="text" placeholder="Enter city" required>
+                </div>
+
+
+                <!-- ADD THIS PINCODE FIELD -->
+                <div class="input-group">
+                  <label for="checkout-pincode">Pincode</label>
+                  <input class="input" id="checkout-pincode" name="pincode" type="text"
+                    placeholder="Enter 6-digit Pincode" pattern="[0-9]{6}" maxlength="6"
+                    title="Enter valid 6-digit pincode" required>
+                </div>
+                <div class="input-group full">
+                  <label for="checkout-address">Address</label>
+                  <textarea class="textarea" id="checkout-address" name="address"
+                    placeholder="Street, landmark, building details" required></textarea>
+                </div>
+                <div class="input-group full">
+                  <label for="checkout-payment">Payment Method</label>
+
+                  <!-- Visual payment icons -->
+                  <span class="payment-icons-label">Select how you'd like to pay:</span>
+                  <div class="payment-icons-row" id="payment-icon-row">
+                    <button type="button" class="payment-icon-btn active" data-pay-icon="Card" aria-label="Pay by Card">
+                      <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="22" rx="4" fill="#1A1F71"/>
+                        <rect y="5" width="32" height="6" fill="#F7B731"/>
+                        <rect x="4" y="14" width="8" height="3" rx="1" fill="white" opacity="0.7"/>
+                        <text x="22" y="18" font-size="6" fill="white" font-family="sans-serif" font-weight="bold">VISA</text>
+                      </svg>
+                      <span>Card</span>
+                    </button>
+                    <button type="button" class="payment-icon-btn" data-pay-icon="UPI" aria-label="Pay via UPI">
+                      <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="22" rx="4" fill="#097939"/>
+                        <text x="5" y="15" font-size="9" fill="white" font-family="sans-serif" font-weight="bold">UPI</text>
+                        <circle cx="26" cy="11" r="5" fill="#FF6B00" opacity="0.85"/>
+                      </svg>
+                      <span>UPI</span>
+                    </button>
+                    <button type="button" class="payment-icon-btn" data-pay-icon="Cash on Delivery" aria-label="Cash on Delivery">
+                      <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="22" rx="4" fill="#2D4A22"/>
+                        <circle cx="16" cy="11" r="7" fill="#6FCF97" opacity="0.3"/>
+                        <text x="10" y="15" font-size="9" fill="#6FCF97" font-family="sans-serif" font-weight="bold">₹</text>
+                        <text x="18" y="15" font-size="6" fill="white" font-family="sans-serif">COD</text>
+                      </svg>
+                      <span>COD</span>
+                    </button>
+                  </div>
+
+                  <select class="select" id="checkout-payment" name="paymentMethod" required>
+                    <option value="Card">Credit / Debit Card</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                  </select>
+                </div>
+
+                <!-- PAYMENT FIELDS -->
+
+                <div id="card-fields" class="input-group full" style="display:none;">
+                  <label>Card Number</label>
+                  <input class="input" id="card-number" type="text" placeholder="Enter 16-digit card number"
+                    maxlength="16">
+                </div>
+
+                <div id="card-extra" class="input-group" style="display:none;">
+                  <label>Expiry (MM/YY)</label>
+                  <input class="input" id="card-expiry" type="text" placeholder="MM/YY" maxlength="5">
+                </div>
+
+                <div id="card-cvv-wrapper" class="input-group" style="display:none;">
+                  <label>CVV</label>
+                  <input class="input" id="card-cvv" type="text" placeholder="CVV" maxlength="3">
+                </div>
+
+                <div id="upi-field" class="input-group full" style="display:none;">
+                  <label>UPI ID</label>
+                  <input class="input" id="upi-id" type="text" placeholder="example@upi">
+                </div>
+
+                <div id="cod-message" class="input-group full" style="display:none;">
+                  <p>Cash on Delivery selected. Pay when order arrives.</p>
+                </div>
+                <div id="checkout-message"></div>
+                <div class="input-group full">
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Place Order
+                  </button>
+                </div>
+
+              </form>
+            </article>
+          </div>
+          <div id="checkout-summary"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+
+<script src="js/script.js" defer></script>
+<script src="js/cart.js" defer></script>
+<script src="js/auth.js" defer></script>
+<script>
+  /* Sync payment icon buttons with the select dropdown */
+  document.addEventListener("DOMContentLoaded", function () {
+    var iconBtns = document.querySelectorAll(".payment-icon-btn");
+    var paySelect = document.getElementById("checkout-payment");
+    if (!iconBtns.length || !paySelect) return;
+
+    iconBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var val = btn.getAttribute("data-pay-icon");
+        /* update active class */
+        iconBtns.forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        /* sync the hidden select */
+        paySelect.value = val;
+        /* fire change event so existing payment field logic runs */
+        paySelect.dispatchEvent(new Event("change"));
+      });
+    });
+
+    /* keep icons in sync if select changes via keyboard */
+    paySelect.addEventListener("change", function () {
+      var val = paySelect.value;
+      iconBtns.forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-pay-icon") === val);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

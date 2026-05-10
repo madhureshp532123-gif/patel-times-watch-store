@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leave a review or feedback for Patel Times Watch Store.">
+    <title>Customer Feedback | Patel Times</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body data-page="feedback">
+    <header id="site-header" class="site-header"></header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="page-banner glass-card" data-reveal>
+            <div class="page-banner-grid">
+              <div>
+                <span class="eyebrow">Feedback</span>
+                <h1>Customer Reviews & Feedback</h1>
+                <p>We value your shopping experience. Leave a review or provide feedback to help us improve.</p>
+              </div>
+              <div class="chip-row">
+                <span class="chip">Store Review</span>
+                <span class="chip">Product Experience</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-layout" style="margin-top: 1.5rem;">
+            <div class="contact-stack">
+              <article class="contact-card glass-card" data-reveal>
+                <h3>Why your feedback matters</h3>
+                <p>Your reviews help other customers make confident choices and allow us to refine our luxury watch collection and shopping experience.</p>
+              </article>
+              <article class="contact-card glass-card" data-reveal style="--delay:1;">
+                <h3>What happens next?</h3>
+                <p>All reviews are read by our team. Selected product reviews may be featured on our website to help future buyers.</p>
+              </article>
+            </div>
+
+            <article class="form-card glass-card" data-reveal>
+              <h2>Leave your Feedback</h2>
+              <p class="lead">Rate your experience and share your thoughts with us.</p>
+              <form id="feedback-form" class="form-grid">
+                <div class="input-group full">
+                  <label for="feedback-name">Name</label>
+                  <input class="input" id="feedback-name" name="name" type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="star-rating-group">
+                  <span class="star-rating-label">Overall Rating</span>
+                  <div class="star-picker" id="feedback-star-picker" role="radiogroup" aria-label="Select a star rating">
+                    <button type="button" class="star-btn" data-value="1" aria-label="1 star">&#9733;</button>
+                    <button type="button" class="star-btn" data-value="2" aria-label="2 stars">&#9733;</button>
+                    <button type="button" class="star-btn" data-value="3" aria-label="3 stars">&#9733;</button>
+                    <button type="button" class="star-btn" data-value="4" aria-label="4 stars">&#9733;</button>
+                    <button type="button" class="star-btn" data-value="5" aria-label="5 stars">&#9733;</button>
+                  </div>
+                  <span class="star-rating-hint" id="fb-star-hint">Click a star to rate</span>
+                  <input type="hidden" name="rating" id="feedback-rating-input" required>
+                </div>
+                <div class="input-group full">
+                  <label for="feedback-message">Your Review</label>
+                  <textarea class="textarea" id="feedback-message" name="message" placeholder="Tell us about your experience..." required></textarea>
+                </div>
+                <div class="input-group full">
+                  <button class="btn btn-primary btn-block" type="submit">Submit Feedback</button>
+                </div>
+              </form>
+              <div id="feedback-message-box"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/script.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Wire up star picker
+        const starPicker = document.getElementById("feedback-star-picker");
+        const ratingInput = document.getElementById("feedback-rating-input");
+        const starHint = document.getElementById("fb-star-hint");
+        const starLabels = ["", "Poor", "Fair", "Good", "Very Good", "Excellent"];
+
+        if (starPicker) {
+          const starBtns = starPicker.querySelectorAll(".star-btn");
+          function highlightStars(value) {
+            starBtns.forEach(function(btn) {
+              btn.classList.toggle("active", Number(btn.dataset.value) <= value);
+            });
+          }
+          starBtns.forEach(function(btn) {
+            btn.addEventListener("mouseover", function() { highlightStars(Number(btn.dataset.value)); });
+            btn.addEventListener("mouseleave", function() { highlightStars(Number(ratingInput.value) || 0); });
+            btn.addEventListener("click", function() {
+              const val = Number(btn.dataset.value);
+              ratingInput.value = val;
+              highlightStars(val);
+              if (starHint) starHint.textContent = val + " star" + (val > 1 ? "s" : "") + " — " + starLabels[val];
+            });
+          });
+        }
+
+        // Handle form submit
+        const form = document.getElementById("feedback-form");
+        const msgBox = document.getElementById("feedback-message-box");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            if (!ratingInput.value) {
+              starHint.textContent = "Please select a rating!";
+              starHint.style.color = "#ff7b7b";
+              return;
+            }
+            form.style.display = "none";
+            msgBox.innerHTML = '<div class="status-badge success" style="margin-top:1rem;font-size:1rem;padding:0.8rem 1.2rem;">Thank you for your valuable feedback!</div>';
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

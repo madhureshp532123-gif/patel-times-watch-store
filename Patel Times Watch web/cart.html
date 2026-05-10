@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your Patel Times cart items and prepare for checkout.">
+    <title>Cart | Patel Times</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body data-page="cart">
+    <header id="site-header" class="site-header"></header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="page-banner glass-card" data-reveal>
+            <div class="page-banner-grid">
+              <div>
+                <span class="eyebrow">Cart</span>
+                <h1>Your selected timepieces</h1>
+                <p>Adjust quantity, review the total, and move forward to the premium checkout experience.</p>
+              </div>
+              <div class="chip-row">
+                <span class="chip">Live Cart Badge</span>
+                <span class="chip">Quantity Controls</span>
+                <span class="chip">Responsive Summary</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cart-layout" style="margin-top: 1.5rem;">
+            <div class="cart-items" id="cart-items"></div>
+            <div id="cart-summary"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/script.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/auth.js" defer></script>
+  </body>
+</html>

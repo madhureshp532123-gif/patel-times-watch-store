@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse Patel Times luxury, sports, smart, and dress watches.">
+    <title>Shop Watches | Patel Times</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body data-page="shop">
+    <header id="site-header" class="site-header"></header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="page-banner glass-card" data-reveal>
+            <div class="page-banner-grid">
+              <div>
+                <span class="eyebrow">Shop</span>
+                <h1>Explore the Patel Times collection</h1>
+                <p>
+                  Filter by category and price to discover the watch that best matches your style, routine, and
+                  occasion.
+                </p>
+              </div>
+              <div class="chip-row">
+                <span class="chip"><span data-product-count>0+</span> Curated Watches</span>
+                <span class="chip">Luxury Finish</span>
+                <span class="chip">Responsive Layout</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="filters-bar glass-card" data-reveal style="--delay:1;">
+            <div class="filter-controls">
+              <div class="input-group filter-search">
+                <label for="search-filter">Search</label>
+                <input class="input" id="search-filter" type="search" placeholder="Search Rolex, Titan, smart..." autocomplete="off">
+              </div>
+              <div class="input-group">
+                <label for="category-filter">Category</label>
+                <select class="select" id="category-filter">
+                  <option value="all">All Categories</option>
+                  <option value="mens">Men's Watches</option>
+                  <option value="womens">Women's Watches</option>
+                  <option value="smart">Smart Watches</option>
+                  <option value="luxury">Luxury Watches</option>
+                  <option value="sports">Sports Watches</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="price-filter">Price</label>
+                <select class="select" id="price-filter">
+                  <option value="all">All Prices</option>
+                  <option value="under-5000">Under &#8377;5,000</option>
+                  <option value="5000-10000">&#8377;5,000 - &#8377;10,000</option>
+                  <option value="10000-50000">&#8377;10,000 - &#8377;50,000</option>
+                  <option value="50000-200000">&#8377;50,000 - &#8377;2,00,000</option>
+                  <option value="200000-plus">Above &#8377;2,00,000</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="sort-filter">Sort By</label>
+                <select class="select" id="sort-filter">
+                  <option value="featured">Featured First</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="rating-high">Top Rated</option>
+                  <option value="name-az">Name: A to Z</option>
+                </select>
+              </div>
+              <div class="input-group filter-action-group">
+                <label>&nbsp;</label>
+                <button class="btn btn-ghost btn-filter-reset" id="clear-filters" type="button">Clear Filters</button>
+              </div>
+            </div>
+            <div class="quick-filter-row" aria-label="Quick price filters">
+              <button class="quick-filter is-active" type="button" data-quick-price="all">All</button>
+              <button class="quick-filter" type="button" data-quick-price="under-5000">Budget</button>
+              <button class="quick-filter" type="button" data-quick-price="5000-10000">Everyday</button>
+              <button class="quick-filter" type="button" data-quick-price="10000-50000">Premium</button>
+              <button class="quick-filter" type="button" data-quick-price="200000-plus">Luxury</button>
+            </div>
+            <div class="results-summary">
+              <p class="results-text" id="shop-results">Loading collection...</p>
+              <p class="muted-line" id="shop-active-filters">Preparing your collection view...</p>
+            </div>
+          </div>
+
+          <div class="product-grid" id="shop-product-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/script.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/auth.js" defer></script>
+  </body>
+</html>
